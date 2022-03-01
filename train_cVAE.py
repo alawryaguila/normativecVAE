@@ -36,11 +36,14 @@ def process():
 
     if not os.path.exists(args.outpath):
         os.makedirs(args.outpath)    
+    
+    torch.manual_seed(42)
+    use_cuda = args.GPU and torch.cuda.is_available()
+    if use_cuda:
+        torch.cuda.manual_seed(42)
+    DEVICE = torch.device("cuda" if use_cuda else "cpu")
 
-    DEVICE = torch.device("cuda")
     input_dim = train_data.shape[1]
-
-
     one_hot_covariates_train = np.append(one_hot_age_train, one_hot_ICV_train, axis=1)
     c_dim = one_hot_covariates_train.shape[1]
     one_hot_covariates_test = np.append(one_hot_age_test, one_hot_ICV_test, axis=1)

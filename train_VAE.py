@@ -17,17 +17,21 @@ def process():
     parser.add_argument('--zdim', type=int, default=10, help='Number of latent vectors')
     parser.add_argument('--hiddendim', type=list, default=[40], help='List of hidden layer sizes')
     parser.add_argument('--batchsize', type=int, default=1000, help='Batch size')
+    parser.add_argument('--GPU', type=bool, default=True, help='Whether to use GPU for model training')
     args = parser.parse_args()
 
     train_data = pd.read_csv(join(args.path, 'train_data.csv'),header=0)
-    train_covariates = pd.read_csv(join(args.path, 'train_covariates.csv'),header=0)
     test_data = pd.read_csv(join(args.path, 'test_data.csv'),header=0)
     test_covariates = pd.read_csv(join(args.path, 'test_covariates.csv'),header=0)
 
     if not os.path.exists(args.outpath):
-        os.makedirs(args.outpath)    
-
-    DEVICE = torch.device("cuda")
+        os.makedirs(args.outpath)   
+         
+    torch.manual_seed(42)
+    use_cuda = args.GPU and torch.cuda.is_available()
+    if use_cuda:
+        torch.cuda.manual_seed(42)
+    DEVICE = torch.device("cuda" if use_cuda else "cpu")
     input_dim = train_data.shape[1]
 
     train_dataset = MyDataset(train_data.to_numpy())
@@ -114,6 +118,6 @@ def process():
 
     DX_pval = latent_pvalues(test_latent, test_covariates['DX'], type='discrete')
     DX_pval.to_csv(join(args.outpath, 'p_values_latentdeviations_vs_DX.csv'), index=False)
-    
+
 if __name__ == '__main__':
     process()
