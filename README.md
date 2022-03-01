@@ -36,4 +36,7 @@ python train_VAE.py --path /path/to/data --outpath /path/to/save/model
 
 ## Implementations and Model Settings
 
+To generate the results illustrated in the submission, we trained both VAE and cVAE models using the Adam optimizer with the following model parameters: learning rate=0.001, batch size=1000, latent dimension = 10, size of hidden dense layer = 40 and number of dense layers in each encoder and decoder = 2. We trained our models on a machine with 1 NVIDIA GeForce MX150 GPU.
+
+
 
