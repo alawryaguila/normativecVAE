@@ -10,7 +10,7 @@ Understanding pathological mechanisms for heterogeneous brain disorders is a dif
 
 Clone this repository and move to folder:
 ```bash
-git clone https://github.com/alawryaguila/multiAE
+git clone /link/to/github/repo
 cd normativecVAE
 ```
 
