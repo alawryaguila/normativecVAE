@@ -16,7 +16,7 @@ cd normativecVAE
 
 Create the customised python environment:
 ```bash
-conda create --name norm
+conda create --name norm python=3.9
 ```
 
 Activate python environment:
