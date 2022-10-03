@@ -5,9 +5,9 @@ import numpy as np
 from os.path import join
 import pandas as pd
 from statsmodels.discrete.discrete_model import Logit
-from sklearn.linear_model import LinearRegression
 import statsmodels as sm
 from statsmodels.api import OLS
+
 class MyDataset_labels(Dataset):
     def __init__(self, data, labels, indices = False, transform=None):
         self.data = data
@@ -91,6 +91,7 @@ def plot_losses(logger, path, title=''):
     plt.legend()
     plt.xlabel('epochs', fontsize=10)
     plt.ylabel('loss', fontsize=10)
+    plt.tight_layout()
     plt.savefig(join(path, "Losses{0}.png".format(title)))
     plt.close()
 

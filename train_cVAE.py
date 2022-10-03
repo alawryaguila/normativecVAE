@@ -16,6 +16,7 @@ def process():
     parser.add_argument('--zdim', type=int, default=10, help='Number of latent vectors')
     parser.add_argument('--hiddendim', type=list, default=[40], help='List of hidden layer sizes')
     parser.add_argument('--batchsize', type=int, default=1000, help='Batch size')
+    parser.add_argument('--GPU', type=bool, default=True, help='Whether to use GPU for model training')
     args = parser.parse_args()
 
     train_data = pd.read_csv(join(args.path, 'train_data.csv'),header=0)

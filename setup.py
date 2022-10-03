@@ -6,15 +6,12 @@ def setup_package():
     name='normativecVAE', 
     packages=find_packages(),
     install_requires=[
-        'statsmodels==0.10.1',
-        'umap_learn==0.5.2',
-        'matplotlib==3.4.1',
-        'numpy==1.19.5',
-        'torch==1.1.0',
-        'setuptools==54.2.0',
-        'pandas==1.2.3',
-        'scikit_learn==1.0.2',
-        'umap==0.1.1',
+        'statsmodels==0.13.2',
+        'matplotlib==3.5.3',
+        'numpy==1.23.2',
+        'torch==1.12.1',
+        'setuptools==59.5.0',
+        'pandas==1.4.3',
     ],
     description='A library for running cVAE normative models'
     )

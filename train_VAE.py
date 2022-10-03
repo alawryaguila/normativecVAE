@@ -8,7 +8,6 @@ from VAE import VAE
 import os
 from utils import plot_losses, Logger, MyDataset, reconstruction_deviation, latent_deviation, separate_latent_deviation, latent_pvalues
 
-
 def process():
     parser = ArgumentParser(description="Train VAE")
     parser.add_argument('--path', type=str, default='', help='Path to input data')
